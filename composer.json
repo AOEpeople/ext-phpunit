@@ -24,7 +24,10 @@
     },
     "require": {
         "php": "^5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0",
-        "typo3/cms-core": "^7.6.23 || ^8.7.9"
+        "typo3/cms-core": "^8.7",
+        "phpunit/phpunit": "~5.3.0",
+        "phpunit/phpunit-selenium": "^3.0.0",
+        "mikey179/vfsstream": "^1.6"
     },
     "require-dev": {
         "oliverklee/aaa": "@dev",
@@ -34,12 +37,8 @@
         "oliverklee/user-phpunittest": "@dev",
         "oliverklee/user-phpunittest2": "@dev",
 
-        "typo3/cms-frontend": "^7.6.23 || ^8.7.9",
-        "helhum/typo3-console": "^4.9",
-
-        "phpunit/phpunit": "~5.3.0",
-        "phpunit/phpunit-selenium": "^3.0.0",
-        "mikey179/vfsstream": "^1.6"
+        "typo3/cms-frontend": "^8.7",
+        "helhum/typo3-console": "^4.9"
     },
     "replace": {
         "phpunit": "self.version",
@@ -74,8 +73,8 @@
     },
     "scripts": {
         "ci:php:lint": "find *.php Classes/ Configuration/ Scripts/ TestExtensions/ Tests/ -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
-        "ci:tests:unit": "$RUN_TESTS_COMMAND Tests/Unit/",
-        "ci:tests:functional": "$RUN_TESTS_COMMAND Tests/Functional/",
+        "ci:tests:unit": "$RUN_TESTS_COMMAND --options=\"Tests/Unit/\"",
+        "ci:tests:functional": "$RUN_TESTS_COMMAND --options=\"Tests/Functional/\"",
         "ci:tests": [
             "@ci:tests:unit",
             "@ci:tests:functional"
